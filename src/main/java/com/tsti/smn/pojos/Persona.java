@@ -22,9 +22,10 @@ public class Persona {
 
 	private Boolean recibirAlertas;
 
-	
 	@ManyToOne
 	private Ciudad ciudad;
+	
+	
 	
 	public Long getDni() {
 		return dni;
