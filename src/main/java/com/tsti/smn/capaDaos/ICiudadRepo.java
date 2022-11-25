@@ -15,5 +15,4 @@ public interface ICiudadRepo extends JpaRepository<Ciudad, Long> {
 	@Query("SELECT c FROM Ciudad c WHERE c.nombre like ?1 or c.provincia.id=?2")
 	List<Ciudad> findByNombreOrIdProvincia(String nombre, Long idProvinciaSeleccionada);
 
-
 }

@@ -17,6 +17,11 @@ public class Persona {
 	private String apellido;
 	
 	private Date fechaNacimiento;
+
+	private String correo;
+
+	private Boolean recibirAlertas;
+
 	
 	@ManyToOne
 	private Ciudad ciudad;
@@ -51,6 +56,18 @@ public class Persona {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public Boolean getRecibirAlertas() {
+		return recibirAlertas;
+	}
+	public void setRecibirAlertas(Boolean recibirAlertas) {
+		this.recibirAlertas = recibirAlertas;
 	}
 	
 }

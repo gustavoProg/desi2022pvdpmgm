@@ -5,17 +5,7 @@ public class CiudadesBuscarForm {
 	private Long provinciaSeleccionada;
 	
 	
-//	private List<Provincia> provincias;
 
-	
-	
-//	public List<Provincia> getProvincias() {
-//		return provincias;
-//	}
-//	public void setProvincias(List<Provincia> provincias) {
-//		this.provincias = provincias;
-//	}
-	
 	public Long getProvinciaSeleccionada() {
 		return provinciaSeleccionada;
 	}

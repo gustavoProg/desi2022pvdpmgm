@@ -20,20 +20,30 @@ public class PersonaForm {
 //	@NotNull(message = "el dni no puede ser nulo")
 //	@Min(value = 7000000, message = "el dni debe ser mayor a 7000000")
 	private Long dni;
-//	@NotNull
+
+	//	@NotNull
 //	@Size(min=2, max=30)
 	private String apellido;
-//	@NotNull
+
+	//	@NotNull
 //	@Size(min=2, max=30)
 	private String nombre;
-//	@NotNull
+
+	//	@NotNull
 	private Long idCiudad;
+	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
+	
+	private String correo;
+
+	private Boolean recibirAlertas;
+	
 	
 	public PersonaForm() {
 		super();
 	}
+	
 	public PersonaForm(Persona p) {
 		super();
 		this.nombre=p.getNombre();
@@ -41,7 +51,11 @@ public class PersonaForm {
 		this.dni=p.getDni();
 		this.idCiudad=p.getCiudad().getId();
 		this.fechaNacimiento=p.getFechaNacimiento();
+		this.correo=p.getCorreo();
+		this.recibirAlertas=p.getRecibirAlertas();
 	}
+	
+	
 	public Long getDni() {
 		return dni;
 	}
@@ -66,6 +80,18 @@ public class PersonaForm {
 	public void setIdCiudad(Long idCiudad) {
 		this.idCiudad = idCiudad;
 	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public Boolean getRecibirAlertas() {
+		return recibirAlertas;
+	}
+	public void setRecibirAlertas(Boolean recibirAlertas) {
+		this.recibirAlertas = recibirAlertas;
+	}
 	
 	public Persona toPojo()
 	{
@@ -75,6 +101,8 @@ public class PersonaForm {
 		p.setNombre(this.getNombre());
 		p.setDni(this.getDni());
 		p.setFechaNacimiento(this.getFechaNacimiento());
+		p.setCorreo(this.getCorreo());
+		p.setRecibirAlertas(this.getRecibirAlertas());
 		return p;
 	}
 	public Date getFechaNacimiento() {
