@@ -26,8 +26,6 @@ import com.tsti.smn.pojos.Ciudad;
 import com.tsti.smn.pojos.EventoExtremo;
 import com.tsti.smn.pojos.Provincia;
 
-//Prueba git
-
 @Controller
 @RequestMapping("/eventoExtremoCrear")
 public class EventoExtremoCrearController {
