@@ -47,23 +47,25 @@
 			    </ul> 
 		   	</td>
         </tr>
+
         <tr>
             <td><label th:text="#{persona.nombre}" /></td>
             <td><input type="text" th:field="*{nombre}" /></td> 
             <td> <p th:if="${#fields.hasErrors('nombre')}" th:errorclass="error" th:errors="*{nombre}" /> </td> 
         </tr>
+
         <tr>
             <td><label th:text="#{persona.apellido}" /></td>
             <td><input type="text" th:field="*{apellido}" /></td> 
             <td> <p th:if="${#fields.hasErrors('apellido')}" th:errorclass="error" th:errors="*{apellido}" /> </td> 
         </tr>
+
         <tr>
             <td><label th:text="#{persona.f.nac}" /></td>
             <td><input type="text" id="fechaNacimiento" autocomplete="off" th:field="*{fechaNacimiento}" placeholder="DD/MM/YYYY" /></td> 
             <td> <p th:if="${#fields.hasErrors('fechaNacimiento')}" th:errorclass="error" th:errors="*{fechaNacimiento}" /> </td> 
-            
-                    
         </tr>
+
         <tr>
             <td><label th:text="#{persona.ciudad}" /></td>
             <td>
@@ -75,7 +77,19 @@
 			</td>
 		</tr>
         
+        <tr>
+            <td><label th:text="#{persona.correo}" /></td>
+            <td><input type="text" th:field="*{correo}" /></td> 
+            <td> <p th:if="${#fields.hasErrors('correo')}" th:errorclass="error" th:errors="*{correo}" /> </td> 
+        </tr>
          
+        <tr>
+            <td><label th:text="#{persona.recibirAlertas}" /></td>
+            <td><input type="checkbox" th:field="*{recibirAlertas}" /></td> 
+            <td> </td> 
+        </tr>
+
+
   </table>
   <table class="botones">
 
