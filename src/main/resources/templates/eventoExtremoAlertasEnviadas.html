@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title><span th:text="#{eventoExtremo.alertasEnviadas.titulo}" /></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+
+<body>
+
+	<div class="starter-template">
+		<h1><span th:text="#{empresa}" /></h1>
+		<h2>
+			<span th:text="#{eventoExtremo.alertasEnviadas.titulo}"></span>
+		</h2>
+	</div>
+
+	<table class="resultados" border="0" style="align-self: center;">
+		<thead>
+			<tr>
+				<th><label th:text="#{eventoExtremo.fecha}" /></th>
+				<th><label th:text="#{eventoExtremo.ciudad}" /></th>
+				<th><label th:text="#{eventoExtremo.descripcion}" /></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="e :${listaAlertasEnviadas}">
+				<td th:text="${{#dates.format(e.fecha,'yyyy-MM-dd')}}"></td>
+				<td th:text="${{e.ciudad.nombre}}"></td>
+				<td th:text="${{e.descripcion}}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+		</br>
+		</br>
+
+	<form th:action="@{/eventoExtremoAlertasEnviadas}" th:object="${formBean}" method="post">
+
+		<table class="botones">
+			<tr>
+				<td><input type="submit" name="action" value="Aceptar" /></td>
+				<td><input type="submit" name="action" value="Cancelar" /></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+
+</html>

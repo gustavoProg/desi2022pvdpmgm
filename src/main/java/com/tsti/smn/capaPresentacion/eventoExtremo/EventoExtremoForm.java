@@ -1,5 +1,6 @@
 package com.tsti.smn.capaPresentacion.eventoExtremo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.tsti.smn.pojos.EventoExtremo;
@@ -16,6 +17,8 @@ public class EventoExtremoForm {
 	private Long idCiudad;
 
 	private String descripcion;
+
+	private ArrayList<String> alertasEnviadas;
 	
 	public EventoExtremoForm() {
 		super();
@@ -70,6 +73,16 @@ public class EventoExtremoForm {
 		this.descripcion = descripcion;
 	}
 
+	
+	
+	public ArrayList<String> getAlertasEnviadas() {
+		return alertasEnviadas;
+	}
+
+	public void setAlertasEnviadas(ArrayList<String> alertasEnviadas) {
+		this.alertasEnviadas = alertasEnviadas;
+	}
+
 	public EventoExtremo toPojo()
 	{
 		EventoExtremo eventoExtremo = new EventoExtremo();
@@ -77,4 +90,6 @@ public class EventoExtremoForm {
 		eventoExtremo.setDescripcion(this.getDescripcion());
 		return eventoExtremo;
 	}
+	
+	
 }
