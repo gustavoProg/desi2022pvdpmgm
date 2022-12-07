@@ -1,8 +1,8 @@
 package com.tsti.smn.capaPresentacion.eventoExtremo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tsti.smn.capaServicios.CiudadService;
 import com.tsti.smn.capaServicios.EstadoClimaService;
@@ -32,9 +30,6 @@ public class EventoExtremoCrearController {
 
 	@Autowired
     private EventoExtremoService service;
-	
-	@Autowired
-    private ProvinciaService serviceProvincia;
 
 	@Autowired
     private CiudadService serviceCiudad;
@@ -64,13 +59,7 @@ public class EventoExtremoCrearController {
     	return this.serviceCiudad.getAll();
     }
 
-    @ModelAttribute("allProvincias")
-    public List<Provincia> getAllProvincias() {
- 
-    	return this.serviceProvincia.getAll();
-    }
-
-    
+   
     @ModelAttribute("allEventosExtremos")
     public List<EventoExtremo> getAllEventosExtremos() {
  
@@ -104,9 +93,11 @@ public class EventoExtremoCrearController {
     			
     			service.save(e);
     			
-    			service.enviarCorreos(e);
+    			ArrayList<String> alertasEnviadas = service.enviarCorreos(e);
     			
-    			return "redirect:/";
+    			modelo.addAttribute("resultados",alertasEnviadas);
+
+    			return "eventoExtremoCrear";
     		}
     	}
     	if(action.equals("Cancelar"))

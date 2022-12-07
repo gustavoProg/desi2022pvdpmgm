@@ -1,6 +1,8 @@
 package com.tsti.smn.capaServicios;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -24,50 +26,57 @@ public class EventoExtremoServiceImpl implements EventoExtremoService {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	
-	
 	@Override
 	public List<EventoExtremo> getAll() {
 		return repo.findAll();
 	}
 
-	
+	public EventoExtremo getEventoExtremoById(Long idEventoExtremo) throws Exception {
+
+		Optional<EventoExtremo> p = repo.findById(idEventoExtremo);
+
+		if (p != null) {
+			return p.get();
+		} else {
+			throw new Exception("No existe la persona con el id=" + idEventoExtremo);
+		}
+	}
+
 	@Override
 	public void save(EventoExtremo eventoExtremo) {
 
 		repo.save(eventoExtremo);
 	}
-	
 
 	@Override
-	public boolean enviarCorreos(EventoExtremo eventoExtremo) {
+	public ArrayList<String> enviarCorreos(EventoExtremo eventoExtremo) {
 
-		try {
-			
-			List<Persona> personas = repoPersona.findAll();
-			
-	        for (Persona p : personas) 
-	        { 
+		ArrayList<String> alertasEnviadas = new ArrayList<String>();
 
-	            if(p.getRecibirAlertas() && p.getCiudad().getId() == eventoExtremo.getCiudad().getId())
-	            {
-	                SimpleMailMessage email = new SimpleMailMessage();
-	                
-		            email.setTo(p.getCorreo());
-		
-		            email.setSubject("Alerta de Evento Extremo!!!");
-		            
-		            email.setText(eventoExtremo.getDescripcion());
-		
-		            mailSender.send(email);
-	            }
-	        }
+		List<Persona> personas = repoPersona.findAll();
 
-		} catch (Exception e) {
-			
-			return false;
+		for (Persona p : personas) {
+
+			if (p.getRecibirAlertas() && p.getCiudad().getId() == eventoExtremo.getCiudad().getId()) {
+				alertasEnviadas.add(p.getCorreo());
+
+				try {
+
+					SimpleMailMessage email = new SimpleMailMessage();
+
+					email.setTo(p.getCorreo());
+
+					email.setSubject("Alerta de Evento Extremo!!!");
+
+					email.setText(eventoExtremo.getDescripcion());
+
+					mailSender.send(email);
+
+				} catch (Exception e) {
+
+				}
+			}
 		}
-        
-        return true;
-    }
+		return alertasEnviadas;
+	}
 }
