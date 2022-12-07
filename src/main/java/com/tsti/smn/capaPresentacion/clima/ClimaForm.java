@@ -1,12 +1,10 @@
 package com.tsti.smn.capaPresentacion.clima;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tsti.smn.pojos.Clima;
-import com.tsti.smn.pojos.Persona;
 
 /**
  * Objeto necesario para insertar o eliminar una persona. 
@@ -17,6 +15,7 @@ public class ClimaForm {
 
 	private Long idClima;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fecha;
 
 	private Long idCiudad;

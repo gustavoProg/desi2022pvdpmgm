@@ -1,7 +1,8 @@
 package com.tsti.smn.capaPresentacion.eventoExtremo;
 
-import java.util.ArrayList;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tsti.smn.pojos.EventoExtremo;
 
@@ -10,6 +11,7 @@ public class EventoExtremoForm {
 
 	private Long idEventoExtremo;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fecha;
 
 	private Long idCiudad;

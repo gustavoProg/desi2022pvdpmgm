@@ -95,6 +95,11 @@ public class EventoExtremoCrearController {
     			
     			ArrayList<String> alertasEnviadas = service.enviarCorreos(e);
     			
+    			if (alertasEnviadas.size() == 0)
+    			{
+    				alertasEnviadas.add("Ninguna alerta fue enviada, No hay subscripciones.");
+    			}
+    			
     			modelo.addAttribute("resultados",alertasEnviadas);
 
     			return "eventoExtremoCrear";
