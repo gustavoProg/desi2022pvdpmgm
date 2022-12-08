@@ -34,7 +34,7 @@ public class ClimaExtendidoBuscarController {
 	@Autowired
     private CiudadService serviceCiudad;
 	
-	
+	//No Utilizado
     @RequestMapping(method=RequestMethod.GET)
     public String preparaForm(Model modelo) {
     	

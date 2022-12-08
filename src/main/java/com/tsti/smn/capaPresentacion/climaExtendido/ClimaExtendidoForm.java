@@ -3,6 +3,10 @@ package com.tsti.smn.capaPresentacion.climaExtendido;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tsti.smn.pojos.Ciudad;
@@ -16,15 +20,23 @@ import com.tsti.smn.pojos.ClimaExtendido;
 public class ClimaExtendidoForm {
 
 	private Long idClimaExtendido;
-
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fecha;
-
+	
+	@NotNull
 	private Long idCiudad;
 
+	@NotNull
+	@Min(value = 0, message = "El % >=0")
 	private Float probabilidad;
 
+	@NotNull
+	@Min(value = 0, message = "Debe ser >=0")
 	private Float cantidadLluvias;
 	
+	@NotNull
+	@Size(min=0, max=500, message = "caracteres <= 500")
 	private String descripcion;
 	
 	public ClimaExtendidoForm() {
@@ -83,7 +95,7 @@ public class ClimaExtendidoForm {
 	public ClimaExtendido toPojo()
 	{
 		ClimaExtendido climaExtendido = new ClimaExtendido();
-		//climaExtendido.setIdClimaExtendido(this.getIdClimaExtendido());
+		climaExtendido.setIdClimaExtendido(this.getIdClimaExtendido());
 		climaExtendido.setFecha(this.getFecha());
 		climaExtendido.setProbabilidad(this.getProbabilidad());
 		climaExtendido.setCantidadLluvias(this.getCantidadLluvias());

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title><span th:text="Hola"></span></title>
+    <title><span th:text="#{climaExtendido.buscar.titulo}"></span></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
@@ -24,17 +24,21 @@
     })
 </script>
 <body>
-<div class="starter-template">
-        <h1><span  th:text="#{empresa}" /></h1>
-        <h2>
-            <span th:text="#{climaExtendido.editar.titulo}"></span>
-        </h2>
-    </div>
+
+<div class="container-fluid ">
+ 		<div class="row">
+ 			<div class="col-12">
+ 				<h1>SISTEMA METEREOLOGICO NACIONAL</h1>
+				<h2> GESTION DE CLIMA EXTENDIDO</h2>		
+ 			</div>
+ 		</div>
+</div>
+
 
 <form  th:action="@{/climaExtendidoBuscar}" th:object="${formBean}" method="post">
 	<table border="1" style="align-self: center;">
 
- 
+ 		
         <tr>
             <td><label th:text="#{clima.ciudad}" /></td>
             <td>
@@ -68,27 +72,27 @@
 	        <th ><label th:text="#{climaExtendido.cantlluvias}" /></th>
 	        <th ><label th:text="#{climaExtendido.descripcion}" /></th>
 	        <th ></th>
-	        <th ></th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr th:each="c : ${resultados}">
 			    <td th:text="${{c.ciudad.nombre}}"></td>
-		        <td th:text="${{#dates.format(c.fecha,'yyyy-MM-dd')}}" ></td>
+		        <td th:text="${{#dates.format(c.fecha,'dd/MM/yyyy')}}" ></td>
 		        <td th:text="${{c.probabilidad}}" ></td>
 		        <td th:text="${{c.cantidadLluvias}}" ></td>
 		        <td th:text="${{c.descripcion}}" ></td>
 		        <td>
                     <a th:href="@{/climaExtendidoEditar/{id}(id=${c.idClimaExtendido})}" class="btn btn-primary">
-                        editar
+                        Editar
                     </a>
                 </td>
+                <!--
                 <td>
                     <a th:href="@{/climaExtendidoEditar/delete/{id}(id=${c.idClimaExtendido})}" class="btn btn-primary">
                         eliminar
                     </a>
                 </td>
-		        
+		        -->
 	      </tr>
 	    </tbody>
     </table>

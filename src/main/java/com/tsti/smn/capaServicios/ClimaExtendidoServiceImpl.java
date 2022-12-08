@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tsti.smn.capaDaos.IClimaExtendidoRepo;
 import com.tsti.smn.capaPresentacion.climaExtendido.ClimaExtendidoBuscarForm;
+import com.tsti.smn.excepciones.Excepcion;
 import com.tsti.smn.pojos.ClimaExtendido;
 
 @Service
@@ -40,9 +41,15 @@ public class ClimaExtendidoServiceImpl implements ClimaExtendidoService {
 	 * Guarda en el repositorio los datos de un clima Extendido
 	 */
 	@Override
-	public void save(ClimaExtendido climaExtendido) {
-
-		repo.save(climaExtendido);
+	public void save(ClimaExtendido climaExtendido) throws Excepcion  {
+   		if(repo.findByCiudadIdAndFecha(climaExtendido.getCiudad().getId(), climaExtendido.getFecha()).isEmpty()) {
+			//no hay registro
+			repo.save(climaExtendido);
+		}
+   		else{
+   			throw new Excepcion("ciudad 1");//no funciona
+   		}
+   		
 	}
 
 	/*
@@ -59,7 +66,7 @@ public class ClimaExtendidoServiceImpl implements ClimaExtendidoService {
 			
 		} else {
 			
-			throw new Exception("No existe la persona con el id="+idClimaExtendido);
+			throw new Exception("No existe clima etendido con el id="+idClimaExtendido);
 		}
 	}
 
