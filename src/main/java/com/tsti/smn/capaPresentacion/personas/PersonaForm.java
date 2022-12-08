@@ -2,6 +2,7 @@ package com.tsti.smn.capaPresentacion.personas;
 
 import java.util.Date;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,24 +18,25 @@ import com.tsti.smn.pojos.Persona;
  */
 public class PersonaForm {
 
-//	@NotNull(message = "el dni no puede ser nulo")
-//	@Min(value = 7000000, message = "el dni debe ser mayor a 7000000")
+	@NotNull(message = "El dni no puede ser nulo")
+	@Min(value = 1000000, message = "El dni debe ser mayor a 1000000")
 	private Long dni;
 
-	//	@NotNull
-//	@Size(min=2, max=30)
+	@NotNull
+	@Size(min=2, max=30, message = "Apellido invalido.")
 	private String apellido;
 
-	//	@NotNull
-//	@Size(min=2, max=30)
+	@NotNull
+	@Size(min=2, max=30, message = "Nombre invalido.")
 	private String nombre;
 
-	//	@NotNull
+	@NotNull
 	private Long idCiudad;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaNacimiento;
-	
+
+	@Email(message="Correo invalido.")
 	private String correo;
 
 	private Boolean recibirAlertas;
