@@ -39,9 +39,7 @@ public class ClimaExtendidoBuscarController {
     public String preparaForm(Model modelo) {
     	
     	ClimaExtendidoBuscarForm form =  new ClimaExtendidoBuscarForm();
-    	
-    	//form.setFecha(new Date());
-   	
+    	    	 	
     	modelo.addAttribute("formBean",form);
     	
     	return "climaExtendidoBuscar";

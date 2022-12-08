@@ -37,9 +37,9 @@
 </div>
  	
  <form  th:action="@{/climaExtendidoEditar}" th:object="${formBean}" method="post">
-	<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+	
 	<input type="hidden" id="idClimaExtendido" th:field="*{idClimaExtendido}">
-
+ 	<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
 	<table border="0" style="align-self: center;">
 		
 		

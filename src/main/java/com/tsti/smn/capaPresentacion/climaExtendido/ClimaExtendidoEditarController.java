@@ -1,6 +1,5 @@
 package com.tsti.smn.capaPresentacion.climaExtendido;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tsti.smn.capaServicios.CiudadService;
 import com.tsti.smn.capaServicios.ClimaExtendidoService;
-import com.tsti.smn.excepciones.Excepcion;
 import com.tsti.smn.pojos.Ciudad;
 import com.tsti.smn.pojos.ClimaExtendido;
 
@@ -96,8 +93,6 @@ public class ClimaExtendidoEditarController {
     		{
     			ClimaExtendido c = formBean.toPojo();
     			
-    			//c.setFecha(new Date());
-    			
     			c.setCiudad(serviceCiudad.getById(formBean.getIdCiudad()));
     			
     			try {
@@ -105,22 +100,12 @@ public class ClimaExtendidoEditarController {
         			
         			return "redirect:/climaExtendidoBuscar";
 										
-				} catch (Excepcion e) {
+				} catch (Exception e) {
 					
-					if(e.getAtributo()==null) //si la excepcion estuviera referida a un atributo del objeto, entonces mostrarlo al lado del compornente (ej. dni)
-					{
-						ObjectError error = new ObjectError("globalError", e.getMessage());
-			            result.addError(error);
-					}
-					else
-					{
-			    		FieldError error1 = new FieldError("formBean",e.getAtributo(),e.getMessage());
-			            result.addError(error1);
-
-					}
+					ObjectError error = new ObjectError("globalError", e.getMessage());
 					
-		            modelo.addAttribute("formBean",formBean);
-		            return "redirect:/climaExtendidoEditar";//Como existe un error me quedo en la misma pantalla
+					result.addError(error);
+		            return "climaExtendidoEditar";//Como existe un error me quedo en la misma pantalla
 				}
     			
     			

@@ -36,7 +36,7 @@ public class ClimaExtendidoForm {
 	private Float cantidadLluvias;
 	
 	@NotNull
-	@Size(min=0, max=500, message = "caracteres <= 500")
+	@Size(min=1, max=500, message = "caracteres <= 500")
 	private String descripcion;
 	
 	public ClimaExtendidoForm() {
@@ -45,7 +45,7 @@ public class ClimaExtendidoForm {
 
 	public ClimaExtendidoForm(ClimaExtendido c) {
 		super();
-		//this.idClimaExtendido = c.getIdClimaExtendido();
+		this.idClimaExtendido = c.getIdClimaExtendido();
 		this.fecha = c.getFecha();
 		this.idCiudad = c.getCiudad().getId();
 		this.probabilidad = c.getProbabilidad();
