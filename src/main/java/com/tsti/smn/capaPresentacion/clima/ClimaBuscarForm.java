@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class ClimaBuscarForm {
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy/mm/dd")
 	private Date fecha;
 
 	private Long idCiudad;

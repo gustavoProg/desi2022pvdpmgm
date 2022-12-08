@@ -16,8 +16,7 @@ public class ClimaForm {
 
 	private Long idClima;
 
-	//@FutureOrPresent(message = "Solo fecha de hoy o hacia adelante.")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fecha;
 
 	@NotNull

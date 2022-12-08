@@ -19,7 +19,7 @@
 		var date_input = $('input[name="fecha"]');
 		var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
 		var options = {
-			format: 'dd/mm/yyyy',
+			format: 'yyyy/mm/dd',
 			container: container,
 			todayHighlight: true,
 			autoclose: true,
@@ -43,7 +43,7 @@
 
 			<tr>
 				<td><label th:text="#{clima.fecha}" /></td>
-				<td><input type="text" id="fecha" autocomplete="off" th:field="*{fecha}" placeholder="DD/MM/YYYY" />
+				<td><input type="text" id="fecha" autocomplete="off" th:field="*{fecha}" placeholder="YYYY/MM/DD" />
 				<td>
 					<p th:if="${#fields.hasErrors('fecha')}" th:errorclass="error" th:errors="*{fecha}" />
 				</td>

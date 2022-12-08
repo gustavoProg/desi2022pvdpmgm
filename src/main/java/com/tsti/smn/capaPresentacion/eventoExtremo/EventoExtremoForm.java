@@ -15,14 +15,14 @@ public class EventoExtremoForm {
 
 	private Long idEventoExtremo;
 
-	@FutureOrPresent(message = "Solo fecha de hoy o hacia adelante.")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	//@FutureOrPresent(message = "Solo fecha de hoy o hacia adelante.")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fecha;
 
 	@NotNull
 	private Long idCiudad;
 
-	@Size(min=10, max=1000, message = "Debe contener un mínimo 10 caracteres y como máximo 1000 caracteres.")
+	@Size(min=10, max=500, message = "Debe contener un mínimo 10 caracteres y como máximo 500 caracteres.")
 	private String descripcion;
 
 	public EventoExtremoForm() {

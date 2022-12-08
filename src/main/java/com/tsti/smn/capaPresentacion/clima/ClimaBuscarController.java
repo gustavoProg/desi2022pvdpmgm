@@ -41,8 +41,6 @@ public class ClimaBuscarController {
     	
     	ClimaBuscarForm form =  new ClimaBuscarForm();
     	
-    	//form.setFecha(new Date());
-   	
     	modelo.addAttribute("formBean",form);
     	
     	return "climaBuscar";

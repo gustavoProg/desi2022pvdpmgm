@@ -14,7 +14,7 @@ public interface EventoExtremoService {
 	
 	EventoExtremo getEventoExtremoById(Long idEventoExtremo) throws Exception;
 	
-	void save(EventoExtremo eventoExtremo);
+	void save(EventoExtremo eventoExtremo) throws Exception;
 	
 	ArrayList<String> enviarCorreos(EventoExtremo eventoExtremo);
 }

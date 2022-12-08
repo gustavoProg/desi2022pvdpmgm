@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,9 +75,6 @@ public class EventoExtremoCrearController {
     	
     	if(action.equals("Aceptar"))
     	{
-    		//FieldError error = new FieldError("formBean","fechaNacimiento","la fecha de nacimiento es incorrecta.");
-            //result.addError(error);
-            
     		if(result.hasErrors())
     		{
     			modelo.addAttribute("formBean",formBean);
@@ -85,24 +83,35 @@ public class EventoExtremoCrearController {
     		}
     		else
     		{
-    			EventoExtremo e = formBean.toPojo();
+    			EventoExtremo ee = formBean.toPojo();
     			
-    			e.setFecha(new Date());
+//    			e.setFecha(new Date());
     			
-    			e.setCiudad(serviceCiudad.getById(formBean.getIdCiudad()));
+    			ee.setCiudad(serviceCiudad.getById(formBean.getIdCiudad()));
     			
-    			service.save(e);
-    			
-    			ArrayList<String> alertasEnviadas = service.enviarCorreos(e);
-    			
-    			if (alertasEnviadas.size() == 0)
-    			{
-    				alertasEnviadas.add("Ninguna alerta fue enviada, No hay subscripciones.");
-    			}
-    			
-    			modelo.addAttribute("resultados",alertasEnviadas);
+				try {
+					
+	    			service.save(ee);
+	    			
+	    			ArrayList<String> alertasEnviadas = service.enviarCorreos(ee);
+	    			
+	    			if (alertasEnviadas.size() == 0)
+	    			{
+	    				alertasEnviadas.add("Ninguna alerta fue enviada, No hay subscripciones.");
+	    			}
+	    			
+	    			modelo.addAttribute("resultados",alertasEnviadas);
 
-    			return "eventoExtremoCrear";
+	    			return "eventoExtremoCrear";
+
+				} catch (Exception e) {
+
+					ObjectError error = new ObjectError("globalError", e.getMessage());
+
+					result.addError(error);
+
+					return "eventoExtremoCrear";
+				}
     		}
     	}
     	if(action.equals("Cancelar"))
