@@ -13,4 +13,7 @@ public interface IClimaRepo extends JpaRepository<Clima, Long> {
 	
 	List<Clima> findByCiudadIdAndFecha(Long idCiudad, Date fecha);
 
+	List<Clima> findByFecha(Date fecha);
+
+	List<Clima> findByCiudadId(Long idCiudad);
 }

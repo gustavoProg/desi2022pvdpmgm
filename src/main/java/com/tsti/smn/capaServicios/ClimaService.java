@@ -11,7 +11,7 @@ public interface ClimaService {
 
 	List<Clima> filter(ClimaBuscarForm filter);
 
-	void save(Clima clima);
+	void save(Clima clima) throws Exception;
 
 	Clima getClimaById(Long idClima) throws Exception;
 

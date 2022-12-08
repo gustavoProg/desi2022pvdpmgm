@@ -66,6 +66,9 @@
 						<option th:each="c : ${allCiudades}" th:value="${c.id}" th:text="${c.nombre}"></option>
 					</select>
 				</td>
+				<td>
+					<p th:if="${#fields.hasErrors('idCiudad')}" th:errorclass="error" th:errors="*{idCiudad}" />
+				</td>
 			</tr>
 
 			<tr>
@@ -90,7 +93,7 @@
 
 	</br>
 	</br>
-	
+
 	<div>
 		<h3>
 			<span th:text="#{eventoExtremo.alertasEnviadas.titulo}"></span>

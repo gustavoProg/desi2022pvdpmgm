@@ -2,6 +2,10 @@ package com.tsti.smn.capaPresentacion.eventoExtremo;
 
 import java.util.Date;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tsti.smn.pojos.EventoExtremo;
@@ -11,11 +15,14 @@ public class EventoExtremoForm {
 
 	private Long idEventoExtremo;
 
+	@FutureOrPresent(message = "Solo fecha de hoy o hacia adelante.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fecha;
 
+	@NotNull
 	private Long idCiudad;
 
+	@Size(min=10, max=1000, message = "Debe contener un mínimo 10 caracteres y como máximo 1000 caracteres.")
 	private String descripcion;
 
 	public EventoExtremoForm() {

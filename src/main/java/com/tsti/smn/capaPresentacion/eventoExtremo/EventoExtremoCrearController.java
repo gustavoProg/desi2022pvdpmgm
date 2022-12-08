@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tsti.smn.capaServicios.CiudadService;
 import com.tsti.smn.capaServicios.EstadoClimaService;
 import com.tsti.smn.capaServicios.EventoExtremoService;
-import com.tsti.smn.capaServicios.ProvinciaService;
 import com.tsti.smn.pojos.Ciudad;
 import com.tsti.smn.pojos.EventoExtremo;
-import com.tsti.smn.pojos.Provincia;
 
 @Controller
 @RequestMapping("/eventoExtremoCrear")
@@ -68,7 +68,7 @@ public class EventoExtremoCrearController {
     
     
     @RequestMapping( method=RequestMethod.POST)
-    public String submit(@ModelAttribute("formBean") /*@Valid*/  
+    public String submit(@ModelAttribute("formBean") @Valid  
         EventoExtremoForm formBean, BindingResult result,
     	ModelMap modelo, @RequestParam String action) {
     	
