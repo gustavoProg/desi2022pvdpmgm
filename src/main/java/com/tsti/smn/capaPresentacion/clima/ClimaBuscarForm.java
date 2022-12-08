@@ -2,9 +2,12 @@ package com.tsti.smn.capaPresentacion.clima;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 public class ClimaBuscarForm {
 
+	@DateTimeFormat(pattern = "yyyy/mm/dd")
 	private Date fecha;
 
 	private Long idCiudad;

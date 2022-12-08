@@ -1,30 +1,36 @@
 package com.tsti.smn.capaPresentacion.clima;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tsti.smn.pojos.Clima;
-import com.tsti.smn.pojos.Persona;
 
-/**
- * Objeto necesario para insertar o eliminar una persona. 
- * Nótese que en lugar de referenciar al objeto Ciudad, reemplaza ese atributo por el idCiudad, lo cual resulta mas sencillo de representar en JSON
- *
- */
+
 public class ClimaForm {
 
 	private Long idClima;
 
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date fecha;
 
+	@NotNull
 	private Long idCiudad;
 
+	@Max(value = 50, message = "La máxima temperatura posible es 50°C.")
+	@Min(value = 0, message = "La mínima temperatura posible es 0°C.")
 	private Float temperatura;
 
+	@Max(value = 100, message = "La máxima humedad posible es 100%.")
+	@Min(value = 0, message = "La mínima humedad posible es 0%.")
 	private Float humedad;
 
+	@NotNull
 	private Long idEstadoClima;
 	
 	public ClimaForm() {

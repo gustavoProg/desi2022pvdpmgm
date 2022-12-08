@@ -41,8 +41,6 @@ public class ClimaBuscarController {
     	
     	ClimaBuscarForm form =  new ClimaBuscarForm();
     	
-    	//form.setFecha(new Date());
-   	
     	modelo.addAttribute("formBean",form);
     	
     	return "climaBuscar";
@@ -51,7 +49,14 @@ public class ClimaBuscarController {
     
     @ModelAttribute("allCiudades")
     public List<Ciudad> getAllCiudades() {
-        return this.serviceCiudad.getAll();
+    	
+    	List<Ciudad> ciudades = this.serviceCiudad.getAll(); 
+    	
+    	Ciudad todas = new Ciudad();
+    	todas.setNombre("Todas");
+    	ciudades.add(todas);
+    			
+        return ciudades;
     }
 
     

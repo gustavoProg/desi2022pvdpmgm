@@ -32,24 +32,6 @@ public class Clima {
 	private EstadoClima estadoClima;
 
 
-	
-//	public Clima() {
-//		super();
-//	}
-//
-//	public Clima(
-//			Long idClima, Date fecha, Ciudad ciudad, 
-//			Float temperatura, Float humedad,
-//			EstadoClima estado) {
-//		super();
-//		this.idClima = idClima;
-//		this.fecha = fecha;
-//		this.ciudad = ciudad;
-//		this.temperatura = temperatura;
-//		this.humedad = humedad;
-//		this.estadoClima = estado;
-//	}
-
 	public Long getIdClima() {
 		return idClima;
 	}
